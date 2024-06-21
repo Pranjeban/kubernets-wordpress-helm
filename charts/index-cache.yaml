@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  wordpress-chart:
+  - apiVersion: v2
+    appVersion: 5.4.1
+    created: "2024-06-21T15:43:57.969933463Z"
+    description: A Helm chart for deploying WordPress with MySQL and Nginx
+    digest: 801859cc913466f17412f09ef6588abceae46a594a7f048a1da16ea39150f917
+    name: wordpress-chart
+    urls:
+    - charts/wordpress-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-06-21T17:01:05Z"

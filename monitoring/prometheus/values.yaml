@@ -1,0 +1,12 @@
+# Prometheus custom values
+alertmanager:
+  enabled: true
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelector:
+      matchLabels:
+        team: frontend
+
+grafana:
+  enabled: false

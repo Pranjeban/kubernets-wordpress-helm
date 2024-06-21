@@ -1,0 +1,47 @@
+# wordpress-chart/templates/tests/test-connection.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "wordpress-chart.fullname" . }}-test-pod-mysql
+spec:
+  containers:
+    - name: mysql-test-container
+      image: {{ .Values.mysql.image.repository }}:{{ .Values.mysql.image.tag }}
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: {{ .Values.mysql.rootPassword | b64dec }}
+      command: ['sh', '-c', 'sleep 3600']
+  restartPolicy: Never
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "wordpress-chart.fullname" . }}-test-pod-wordpress
+spec:
+  containers:
+    - name: wordpress-test-container
+      image: {{ .Values.wordpress.image.repository }}:{{ .Values.wordpress.image.tag }}
+      env:
+        - name: WORDPRESS_DB_HOST
+          value: {{ .Values.wordpress.dbHost }}
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.wordpress.dbPasswordSecret }}
+              key: password
+      command: ['sh', '-c', 'sleep 3600']
+  restartPolicy: Never
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "wordpress-chart.fullname" . }}-test-pod-nginx
+spec:
+  containers:
+    - name: nginx-test-container
+      image: {{ .Values.nginx.image.repository }}:{{ .Values.nginx.image.tag }}
+      command: ['sh', '-c', 'sleep 3600']
+  restartPolicy: Never

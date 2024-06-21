@@ -1,0 +1,42 @@
+{
+    "annotations": {
+      "list": []
+    },
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Pod CPU Utilization",
+        "targets": [
+          {
+            "expr": "rate(container_cpu_usage_seconds_total{pod=~\"wordpress-.*\"}[1m])",
+            "legendFormat": "{{pod}}",
+            "refId": "A"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Total Request Count",
+        "targets": [
+          {
+            "expr": "sum(rate(nginx_http_requests_total{job=\"nginx\"}[1m]))",
+            "legendFormat": "requests",
+            "refId": "B"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Total 5xx Requests",
+        "targets": [
+          {
+            "expr": "sum(rate(nginx_http_requests_total{job=\"nginx\",status=~\"5..\"}[1m]))",
+            "legendFormat": "5xx errors",
+            "refId": "C"
+          }
+        ]
+      }
+    ],
+    "title": "WordPress Monitoring Dashboard"
+  }
+  

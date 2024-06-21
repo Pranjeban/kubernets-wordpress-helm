@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nginx-service-monitor
+  labels:
+    team: frontend
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  endpoints:
+    - port: http
+      path: /nginx_status
+      interval: 15s

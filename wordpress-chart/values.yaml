@@ -1,0 +1,18 @@
+# MySQL values
+mysql:
+  image: pranjeban14/mysql-image:latest
+  rootPassword: MTIzNDU2Nzg=
+  persistence:
+    size: 20Gi
+
+# WordPress values
+wordpress:
+  image: pranjebn14/wordpress-image:latest
+  dbHost: wordpress-mysql
+  dbPasswordSecret: mysql-pass
+  persistence:
+    size: 20Gi
+
+# Nginx values
+nginx:
+  image: pranjeban14/my-nginx:latest
