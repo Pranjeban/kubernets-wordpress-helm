@@ -17,6 +17,7 @@
   - [Service Monitors](#service-monitors)
   - [Dashboards](#dashboards)
 - [Cleanup](#cleanup)
+- [Output](#Output)
 - [Best Practices](#best-practices)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
@@ -179,6 +180,15 @@ To stop and delete the Minikube cluster:
 minikube stop
 minikube delete
 ```
+
+## Output
+### Grafana
+![Alt-text](./Output/Screenshot%20from%202024-06-21%2021-52-01.png)
+
+### Chartmuseum
+![Atl-text](./Output/Screenshot%20from%202024-06-21%2022-50-58.png)
+
+
 
 ## Best Practices
 - Use Kubernetes Secrets to manage sensitive data.
